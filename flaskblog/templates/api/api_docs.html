@@ -1,0 +1,32 @@
+{% extends "api/api_layout.html" %}
+{% block content %}
+		<div class="content-section">
+			<h1>CHIRPERR API DOCUMENTATION</h1>
+		</div>
+		<div id="endpoint-sample">
+			<div class="content-section">
+				<h1> API LOGIN ENDPOINT </h1>
+			    <p>URL: http://127.1.1.1:5000/api/login/email=youremail&password=yourpassword</p>
+			    <p> Enter your login in details like shown below</p>
+			    <p>Example login: http://127.1.1.1:5000/api/login/email=test@chirperr.com&password=testing</p>
+			</div>
+			<div class="content-section">
+				<h1> API NEW POST ENDPOINT </h1>
+			    <p>URL: http://127.1.1.1:5000/api/post/new/(yourapikey)/title=(yourtitle)&content=(yourcontent)</p>
+			    <p> Enter your login in details like shown below</p>
+			    <p>Example new_post: http://127.1.1.1:5000/api/post/new/ab73c-62he3-su1s4/title=MY TITLE&content=My content</p>
+			</div>
+			<div class="content-section">
+				<h1> API ACCOUNT ENDPOINT </h1>
+			    <p>URL: http://127.1.1.1:5000/api/(yourapikey)/account/(username_of_accounts_user)</p>
+			    <p> Enter your login in details like shown below</p>
+			    <p>Example new_post: http://127.1.1.1:5000/api/ab73c-62he3-su1s4/account/Testuser</p>
+			</div>
+			<div class="content-section">
+				<h1> API MEMBERSHIP ENDPOINT </h1>
+			    <p>URL: http://127.1.1.1:5000/api/membership/(username)</p>
+			    <p> Enter your login in details like shown below</p>
+			    <p>Example new_post: http://127.1.1.1:5000/api/membership/Testuser</p>
+			</div>
+		</div>	
+{% endblock content %}

@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+{% block content%}
+	<div class="content-section">
+		<div class="media">
+			<img class="rounded-circle account-img" src="{{ image_file }}" alt="" style="width:78px;height:78px;">
+			<div class="media-body">
+				<strong class="account-heading">{{ current_user.username }}</strong>
+				<p class="text-secondary">{{ current_user.email }}</p>
+                <strong class="text-secondary">MEMBERSHIP : {{ current_user.membership }}</strong>
+            </div>
+		</div>
+        <form method="POST" action="" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Account Info</legend>
+                <div class="form-group">
+                    {{ form.username.label(class="form-control-label") }}
+
+                    {% if form.username.errors %}
+                        {{ form.username(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.username.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.username(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.email.label(class="form-control-label") }}
+                    {% if form.email.errors %}
+                        {{ form.email(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.email(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <a href="{{ url_for('users.upgrade_membership', id=current_user.id) }}"><button type="button" class="btn btn-info btn-sm m-1">Upgrade Membership</button></a>
+                <hr>
+               	<div class="form-group">
+                    {{ form.picture.label() }}
+                    {{ form.picture(class="form-control-file") }}
+                    {% if form.picture.errors %}
+                    	{% for error in form.picture.errors %}
+                            <span class="text-danger">{{ error }}</span></br>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+            <hr>
+            <h2>DANGER ZONE</h2>
+            <div class="form-group">
+                <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete Account</button>
+            </div>
+            <hr>
+        </form>
+	</div>
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <strong  class="modal-title" id="deleteModalLabel">Delete Account?</strong>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <form action="{{ url_for('users.delete_user') }}" method="POST">
+        <input class="btn btn-danger" type="submit" value="Delete">
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="content-section" id="api_key">
+        <div class="media">
+            <div class="media-body">
+                <div class="">
+                    <h3 class="article-title">API SECTION</h3>
+                </div>
+                <hr>
+                <h4 class="article-content">API Key: <strong>{{ current_user.api_token }}</strong></h4>
+                <button type="button" class="btn btn-outline-info">
+                    <a href="{{ url_for('users.new_token') }}">
+                        Generate new API key
+                    </a>
+                </button>
+            </div>
+        </div>
+</div>
+{% endblock content %}

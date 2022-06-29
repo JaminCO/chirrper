@@ -1,0 +1,180 @@
+{% extends "api/api_layout.html" %}
+{% block content %}
+<html>
+<head>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+		<div class="content-section">
+			<h2>CHIRPERR API endpoints</h2>
+			<p>Chirperr API endpoints and its uses.</p>
+
+			<table style="width:100%">
+			  <tr>
+			    <th>Endpoints</th>
+			    <th>Endpoint Uses</th>
+			  </tr>
+			<tr>
+			    <td>/api/post/post_id</td>
+			    <td>
+			    	This is used to only get the post that belongs to the id,
+			    </td>
+			</tr>
+			<tr>
+			    <td>/api/post/all</td>
+			    <td>
+			    	This is used to get all the post in chirperr,
+			    	it is only used to get the post id and then use it in the above endpoint
+			    </td>
+			</tr>
+			<tr>
+			    <td>/api/memebership</td>
+			    <td>
+			    	This is used to get the membership status of the current user
+			    </td>
+			</tr>
+			<tr>
+			    <td>/api/membership/(username)</td>
+			    <td>
+			    	This is used to get the membership status of the specified user
+			    </td>
+			</tr>
+			<tr>
+			    <td>
+			    	/api/login
+			    </td>
+			    <td>
+			    	This is used for logging into chirperr without going to the login page,
+			    	follow the instructions given or use the below endpoint
+			    </td>
+			</tr>
+			<tr>
+			    <td>
+			    	/api/login/email=(youremail)
+			    	&password=(yourpassword)
+			    </td>
+			    <td>
+			    	This is used for logging into chirperr without going to the login page
+			    </td>
+			</tr>
+			<tr>
+			    <td>
+			    	/api/post/new
+			    </td>
+			    <td>
+			    	This is used for posting in chirperr without going to the website,
+			    	follow the instructions given or use the below endpoint
+			    </td>
+			</tr>
+			<tr>
+			    <td>
+			    	/api/post/new/(yourapikey)/
+			    	title=(yourtitle)&content=(yourcontent)
+			    </td>
+			    <td>
+			    	This is the api endpoint for posting 
+			    </td>
+			</tr>
+			<tr>
+			    <td>
+			    	/api/account
+			    </td>
+			    <td>
+			    	This is used for getting
+			    	the account information for the
+			    	logged in user.
+			    	It returns it in JSON Format
+			    </td>
+			</tr>
+			<tr>
+			    <td>
+			    	/api/(yourapikey)/account/
+			    	(username_of_accounts_user)
+			    </td>
+			    <td>
+			    	This is used for getting
+			    	the account information for the
+			    	specified user.
+			    	It returns it in JSON Format
+			    </td>
+			</tr>
+			</table>
+		</div>
+
+<h2>ENDPOINT METHODS</h2>
+
+<table>
+  <tr>
+    <th>ENDPOINT</th>
+    <th>METHOD</th>
+    <th>Link</th>
+  </tr>
+  <tr>
+    <td>/api/post/post_id</td>
+    <td>GET</td>
+    <td><a href="{{url_for('api.api_post', id=1) }}">/api/post/post_id</a></td>
+  </tr>
+  <tr>
+    <td>/api/post/all</td>
+    <td>GET</td>
+    <td><a href="{{url_for('api.api_all_post') }}">/api/post/all</a></td></td>
+  </tr>
+  <tr>
+    <td>/api/memebership</td>
+    <td>GET</td>
+    <td><a href="{{url_for('api.api_membership') }}">/api/membership</a></td></td>
+  </tr>
+  <tr>
+    <td>/api/membership/(username)</td>
+    <td>GET</td>
+    <td>UK</td>
+  </tr>
+  <tr>
+    <td>/api/login/email=(youremail)
+    &password=(yourpassword)</td>
+    <td>POST</td>
+    <td>Canada</td>
+  </tr>
+  <tr>
+    <td>
+    	/api/post/new/(yourapikey)/
+    	title=(yourtitle)&content=(yourcontent)
+	</td>
+    <td>POST</td>
+    <td>Italy</td>
+  </tr>
+  <tr>
+    <td>
+    	/api/account
+	</td>
+    <td>GET</td>
+    <td>Italy</td>
+  </tr>
+  <tr>
+    <td>
+    	/api/(yourapikey)/account/
+    	(username_of_accounts_user)
+	</td>
+    <td>GET</td>
+    <td>Italy</td>
+  </tr>
+</table>
+
+</body>
+{% endblock content %}
