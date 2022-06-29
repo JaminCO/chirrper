@@ -1,7 +1,6 @@
 instance/
 .webassets-cache
 *.pyc
-config.py
 *.db
 
 # Environments
