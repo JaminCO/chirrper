@@ -13,7 +13,7 @@ login_manager.login_message_category = 'info'
 mail = Mail()
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://slxxbwwbduxogu:816de0361e2a6e345c7b175fd9dc088e2f12b307597349c67af97b430c74ba16@ec2-44-194-145-230.compute-1.amazonaws.com:5432/ddgrod6q8l2gef'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://zxzwzwpqttfjzc:4b838ebe35a280df277340f1c36837863905f99bf19655babb9ddff9ac1f6854@ec2-44-197-128-108.compute-1.amazonaws.com:5432/davhiscuvfhsdg'
 db = SQLAlchemy(app)
 
 def create_app(config_class=Config):
