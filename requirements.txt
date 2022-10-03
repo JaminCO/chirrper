@@ -30,4 +30,4 @@ urllib3<1.27,>=1.21.1
 chardet<4,>=3.0.2
 certifi>=2017.4.17
 setuptools>=3.0
-psycopg2
+psycopg2-binary
