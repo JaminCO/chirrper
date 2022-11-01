@@ -2,18 +2,32 @@
 {% block content %}
     <h2>Posts by {{ user.username }} ({{ posts.total }})</h2>
     {% for post in posts.items %}
-        <article class="media content-section">
-          <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}">
-          <div class="media-body">
-            <div class="article-metadata">
-              <!--<a class="mr-2" href="{{ url_for('users.user_posts', username=post.author.username) }}">-->
-              <h3>@{{post.author.username }}<!--</a>-->
-               <small class="shift text-muted">Email: <a href="mailto:{{post.author.email }}">{{post.author.email }}</a></small>
-              <small class="text-muted">{{ post.date_posted.strftime('Published On %A-%d-%B-%Y') }}</small></h3>
-            </div>
-            <strong><a class="article-title" href="{{ url_for('posts.post', post_id=post.id) }}">{{ post.title }}</a></strong>
-             <p class="article-content">{{ post.content }}
-        </article>
+        {% if post.content_img %}
+          <article class="media content-section">
+            <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}">
+            <div class="media-body">
+              <div class="article-metadata">
+                <!--<a class="mr-2" href="{{ url_for('users.user_posts', username=post.author.username) }}">-->
+                <h5>@{{post.author.username }}</h5><!--</a>-->
+                <small class="text-muted">{{ post.date_posted.strftime('Published On %A-%d-%B-%Y') }}</small>
+              </div>
+              <h3><a class="article-title" href="{{ url_for('posts.post', post_id=post.id) }}">{{ post.title }}</a></h3>
+              <p class="article-content">{{ post.content }}
+              <img class="article-img" src="{{ url_for('static', filename='content_pics/' + post.content_img) }}" alt="" style="width:300px;height:300px;">
+          </article>
+        {% else %}
+          <article class="media content-section">
+            <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}">
+            <div class="media-body">
+              <div class="article-metadata">
+                <!--<a class="mr-2" href="{{ url_for('users.user_posts', username=post.author.username) }}">-->
+                <h5>@{{post.author.username }}</h5><!--</a>-->
+                <small class="text-muted">{{ post.date_posted.strftime('Published On %A-%d-%B-%Y') }}</small>
+              </div>
+              <h3><a class="article-title" href="{{ url_for('posts.post', post_id=post.id) }}">{{ post.title }}</a></h3>
+              <p class="article-content">{{ post.content }}
+          </article>  
+        {% endif %}
     {% endfor %}
     {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
       {% if page_num %}
@@ -25,5 +39,5 @@
       {% else %}
         ....
       {% endif %}
-    {% endfor %}
+    {% endfor %}      
 {% endblock content %}
