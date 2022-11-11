@@ -13,7 +13,7 @@ login_manager.login_message_category = 'info'
 mail = Mail()
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://zxzwzwpqttfjzc:4b838ebe35a280df277340f1c36837863905f99bf19655babb9ddff9ac1f6854@ec2-44-197-128-108.compute-1.amazonaws.com:5432/davhiscuvfhsdg'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 db = SQLAlchemy(app)
 
 def create_app(config_class=Config):
