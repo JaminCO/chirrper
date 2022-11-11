@@ -10,7 +10,7 @@
 
      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
 
-     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}">
 
 	{% if title %}
 		<title>{{ title }} | Chirperr</title>
@@ -22,7 +22,7 @@
 	<header class="site-header">
       <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
         <div class="container">
-          <img class="rounded-circle article-img" src="{{ url_for('static', filename='favicon.ico') }}">
+          <img class="rounded-circle article-img" src="{{ url_for('static', filename='favicon.png') }}">
           <a class="Header mr-4" href="/api">API</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
