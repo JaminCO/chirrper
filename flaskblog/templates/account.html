@@ -4,7 +4,7 @@
 		<div class="media">
 			<img class="rounded-circle account-img" src="{{ image_file }}" alt="" style="width:78px;height:78px;">
 			<div class="media-body">
-				<strong class="account-heading">{{ current_user.username }}</strong>
+				<a href="#" ><strong class="account-heading">@{{ current_user.username }}</strong></a>
 				<p class="text-secondary">{{ current_user.email }}</p>
                 <strong class="text-secondary">MEMBERSHIP : {{ current_user.membership }}</strong>
             </div>
@@ -13,6 +13,34 @@
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Account Info</legend>
+                <div class="form-group">
+                    {{ form.firstname.label(class="form-control-label") }}
+
+                    {% if form.firstname.errors %}
+                        {{ form.firstname(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.firstname.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.firstname(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.lastname.label(class="form-control-label") }}
+
+                    {% if form.lastname.errors %}
+                        {{ form.lastname(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.lastname.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.lastname(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
                 <div class="form-group">
                     {{ form.username.label(class="form-control-label") }}
 
@@ -27,6 +55,7 @@
                         {{ form.username(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
+                
                 <div class="form-group">
                     {{ form.email.label(class="form-control-label") }}
                     {% if form.email.errors %}

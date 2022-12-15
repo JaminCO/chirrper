@@ -37,11 +37,12 @@ def save_picture_c(picture):
 def send_reset_email(user):
     token = user.get_reset_token()
     msg = Message('Password Reset Request',
-                  sender="no_reply@jaminblog.com",
+                  sender="chirrper@gmail.com",
                   recipients=[user.email])
-    msg.body = f''' There was a Request To reset your password, please visit the following link:
+    msg.body = f'''Hello {(user.username).title()}. There was a Request To reset your password, please visit the following link:
 {url_for('users.reset_token', token=token, _external=True)}
 If you did not make this request then simply ignore this email and no changes will be made.
+For Additional Measures Contact Us.
 '''
     mail.send(msg)
 
@@ -53,3 +54,18 @@ def verify_api_token(token):
         except:
             return None
         return user
+
+
+def send_redeem_email(transaction):
+    token=transaction.token
+    msg = Message('$$$ You were Gifted $$$',
+                  sender="chirrper@gmail.com",
+                  recipients=[transaction.reciever.email])
+    msg.body = f'''{(transaction.reciever.username).title()}!!!
+You Just recieved {transaction.amount}$ worth of Chirrpey from {transaction.sender.username}
+$       .       .       .       .       .       $       .       .       .       .       .       $|
+To Redeem your gift click the url here -->>: {url_for('users.redeem_gift', token=token, _external=True)}
+For more details on your gift check the below url
+{url_for('users.gift_details', token=token, _external=True)}
+'''
+    mail.send(msg)

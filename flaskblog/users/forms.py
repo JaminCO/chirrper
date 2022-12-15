@@ -7,6 +7,10 @@ from flaskblog.models import User
 
 
 class RegistrationForm(FlaskForm):
+    firstname = StringField('First Name',
+                           validators=[DataRequired(), Length(min=2, max=20)])
+    lastname = StringField('Last Name',
+                           validators=[DataRequired(), Length(min=2, max=20)])
     username = StringField('Username',
                            validators=[DataRequired(), Length(min=2, max=20)])
     email = StringField('Email',
@@ -36,6 +40,10 @@ class LoginForm(FlaskForm):
 
 
 class UpdateAccountForm(FlaskForm):
+    firstname = StringField('First Name',
+                           validators=[DataRequired(), Length(min=2, max=20)])
+    lastname = StringField('Last Name',
+                           validators=[DataRequired(), Length(min=2, max=20)])
     username = StringField('Username',
                            validators=[DataRequired(), Length(min=2, max=20)])
 
