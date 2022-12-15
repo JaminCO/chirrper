@@ -4,7 +4,10 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from flaskblog.config import Config
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 bcrypt = Bcrypt()
 login_manager = LoginManager()
 login_manager.login_view = 'users.login'
@@ -13,7 +16,10 @@ login_manager.login_message_category = 'info'
 mail = Mail()
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///chirrper.db'
+os.getenv("SQLALCHEMY_DATABASE_URI")
+# 'sqlite:///data.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 db = SQLAlchemy(app)
 
 def create_app(config_class=Config):

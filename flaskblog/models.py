@@ -7,9 +7,12 @@ from flask_login import UserMixin
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
+    firstname = db.Column(db.String(20), nullable=True)
+    lastname = db.Column(db.String(20), nullable=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     image_file = db.Column(db.String(20), nullable=False, default='default.ico')
     password = db.Column(db.String(60), nullable=False)
+    bio = db.Column(db.Text, nullable=False, default="nothing to see here")
     posts = db.relationship('Post', backref='author', lazy=True)
     comments = db.relationship('Comment', backref='author', lazy=True)
     membership = db.Column(db.String(20), nullable=False, default="Basic")
