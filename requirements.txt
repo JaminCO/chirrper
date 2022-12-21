@@ -32,3 +32,4 @@ Werkzeug==1.0.1
 WTForm==1.0
 WTForms==3.0.1
 zipp==3.10.0
+python-dotenv
