@@ -5,10 +5,10 @@ import json
 
 main = Blueprint('main', __name__)
 
-@main.route("/")
 def landing():
     return "landing page"
 
+@main.route("/")
 @main.route("/explore")
 def explore():
     page = request.args.get('page', 1, type=int)
